@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>vinnieGPT</title>
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- Prism Light (default) -->
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.css" rel="stylesheet" id="prism-theme">
+  <!-- Prism Dark (disabled initially) -->
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" id="prism-dark" disabled>
+</head>
+<body>
+  <header>
+    <h1>vinnieGPT</h1>
+    <button id="theme-toggle" title="Toggle Theme">🌙</button>
+    <button id="clear-btn">Clear</button>
+  </header>
+
+  <main id="chat-container"></main>
+
+  <div id="input-box">
+    <input type="text" id="user-input" placeholder="Ask me anything..." />
+    <button id="send-btn">➤</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

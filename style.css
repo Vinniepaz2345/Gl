@@ -1,0 +1,356 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f0f0;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+  background: #1e1e1e;
+  color: #ddd;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #ccc;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+body.dark header {
+  background: #2c2c2c;
+  border-color: #444;
+}
+
+#theme-toggle {
+  font-size: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#chat-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bubble {
+  max-width: 90%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1.4;
+  position: relative;
+}
+
+.bubble.user {
+  align-self: flex-end;
+  background: #d1e7ff;
+  color: #000;
+}
+
+.bubble.bot {
+  align-self: flex-start;
+  background: #e4e4e4;
+  color: #000;
+}
+
+body.dark .bubble.user {
+  background: #2a82c9;
+  color: #fff;
+}
+
+body.dark .bubble.bot {
+  background: #333;
+  color: #fff;
+}
+
+.copy-btn {
+  font-size: 12px;
+  padding: 4px 8px;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: #ccc;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+body.dark .copy-btn {
+  background: #555;
+  color: #fff;
+}
+
+#input-box {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  background: #fff;
+}
+
+body.dark #input-box {
+  background: #2c2c2c;
+  border-color: #444;
+}
+
+#user-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  font-size: 16px;
+  outline: none;
+}
+
+body.dark #user-input {
+  background: #1e1e1e;
+  color: #fff;
+  border-color: #444;
+}
+
+#send-btn {
+  margin-left: -40px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #007bff;
+}
+
+#clear-btn {
+  margin: 10px;
+  align-self: center;
+  padding: 6px 12px;
+  font-size: 14px;
+  background: #f44;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+body.dark #clear-btn {
+  background: #d33;
+}
+
+pre {
+  background: transparent !important;
+  padding: 8px;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin-top: 6px;
+}
+
+code {
+  font-family: monospace;
+  font-size: 14px;
+}
+
+code.inline {
+  background: rgba(0,0,0,0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.dots::after {
+  content: ' ';
+  display: inline-block;
+  animation: dots 1.5s infinite steps(3);
+}
+
+@keyframes dots {
+  0% { content: ''; }
+  33% { content: '.'; }
+  66% { content: '..'; }
+  100% { content: '...'; }
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 18px;
+  }
+  #user-input {
+    font-size: 14px;
+  }
+  #clear-btn {
+    font-size: 12px;
+  }
+}
+pre {
+  background: #f5f5f5 !important;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+body.dark pre {
+  background: #2d2d2d !important;
+}
+
+code {
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.bubble pre {
+  margin-top: 6px;
+  max-width: 100%;
+}
+@keyframes blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background-color: currentColor;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  vertical-align: bottom;
+}
+
+.user-message {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 20px 20px 0 20px;
+  max-width: 75%;
+  align-self: flex-end;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  white-space: pre-wrap;
+  word-wrap: pre-wrap;
+  overflow-wrap: break-word;
+  line-height: 1.4;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  display: inline-block;
+}
+
+.floating-btn {
+  position: fixed;
+  bottom: 90px;
+  right: 10px;
+  padding: 8px 12px;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  background: currentColor;
+  animation: blink 0.8s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+.floating-btn {
+  position: fixed;
+  bottom: 90px;
+  right: 10px;
+  padding: 8px 14px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  transition: background 0.3s ease;
+}
+
+.floating-btn:hover {
+  background: var(--primary-dark);
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  background: currentColor;
+  animation: blink 0.8s steps(1) infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: background 0.3s, opacity 0.3s;
+  z-index: 10;
+}
+
+.copy-btn:hover {
+  background: #357bd8;
+  opacity: 1;
+}
+
+pre {
+  position: relative;
+  overflow: auto;
+  padding: 1rem;
+  border-radius: 10px;
+  background: var(--code-bg, #f4f4f4);
+  margin-top: 1em;
+}
+.message.user {
+  text-align: left;
+  background-color: #007bff; /* Blue bubble */
+  color: white;
+  padding: 10px 15px;
+  border-radius: 20px 20px 0 20px;
+  max-width: 75%;
+  margin: 8px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  line-height: 1.4;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  overflow-wrap: break-word;
+}
