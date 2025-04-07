@@ -4,7 +4,7 @@ const chatContainer = document.getElementById("chat-container");
 const clearBtn = document.getElementById("clear-btn");
 const themeToggle = document.getElementById("theme-toggle");
 
-const apiKey = "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"; // Replace with your key
+const apiKey = "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"; // Replace with your key
 let isTyping = true;
 
 sendBtn.addEventListener("click", () => {
